@@ -1,0 +1,108 @@
+@use 'variables' as *;
+
+// Hero: portrait, name and intro
+
+.hero {
+  position: relative;
+  height: 100svh;
+  min-height: 620px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding-bottom: clamp(30px, 6vh, 64px);
+}
+
+.hero img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 24%;
+  filter: brightness(0.52) contrast(1.1);
+}
+
+.hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(5, 5, 5, 0.4) 0%,
+    rgba(5, 5, 5, 0.25) 30%,
+    rgba(5, 5, 5, 0.8) 75%,
+    $ink 100%
+  );
+}
+
+.hb {
+  position: relative;
+  z-index: 2;
+}
+
+.hi {
+  padding: 0 clamp(18px, 4vw, 60px);
+  font-weight: 600;
+  font-size: clamp(15px, 1.6vw, 20px);
+  margin-bottom: 10px;
+  color: #d6d4ce;
+}
+
+.clip {
+  overflow: hidden;
+  padding-bottom: 0.04em;
+}
+
+.nm {
+  font-size: clamp(52px, 12.5vw, 200px);
+  white-space: nowrap;
+  padding: 0 clamp(18px, 4vw, 60px);
+}
+
+.nm.o {
+  -webkit-text-stroke: 1.5px var(--tx);
+  color: transparent;
+}
+
+.nm .ch {
+  display: inline-block;
+}
+
+.role {
+  padding: 18px clamp(18px, 4vw, 60px) 0;
+  font-size: clamp(15px, 1.6vw, 20px);
+  color: #d6d4ce;
+  max-width: 640px;
+}
+
+.role b {
+  color: var(--ac);
+  font-weight: 600;
+}
+
+@include mobile {
+  .nm {
+    font-size: 16vw;
+  }
+}
+
+.hi {
+  font-size: clamp(20px, 2.4vw, 32px);
+}
+
+.role {
+  font-size: clamp(19px, 2.2vw, 28px);
+  max-width: 820px;
+}
+
+// Added for semantic markup: the name is an h1 made of two clipped lines.
+.hero h1 {
+  margin: 0;
+  font: inherit;
+}
+
+.clip,
+.nm {
+  display: block;
+}

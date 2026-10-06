@@ -1,0 +1,245 @@
+@use 'variables' as *;
+
+// Stacking project cards and mock-ups
+
+.pj {
+  margin-top: clamp(80px, 12vh, 130px);
+}
+
+.pj > h2 {
+  font-size: clamp(28px, 4vw, 56px);
+  margin-bottom: 24px;
+}
+
+.cd {
+  position: sticky;
+  top: 11vh;
+  height: min(54vh, 470px);
+  margin-bottom: 4vh;
+  border: 1px solid var(--ln);
+  display: grid;
+  grid-template-columns: 1.05fr 1fr;
+  gap: clamp(16px, 3vw, 40px);
+  padding: clamp(18px, 2.6vw, 34px);
+  transform-origin: 50% 0;
+  overflow: hidden;
+}
+
+.cd:nth-of-type(1) {
+  background: #0c0c10;
+}
+
+.cd:nth-of-type(2) {
+  background: var(--ac);
+  color: $ink;
+  border-color: var(--ac);
+}
+
+.cd:nth-of-type(3) {
+  background: #150d28;
+  border-color: #2c1c52;
+}
+
+.cd .tx {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-width: 0;
+}
+
+.cd .top {
+  display: flex;
+  justify-content: space-between;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.cd .big {
+  font-size: clamp(28px, 4.2vw, 60px);
+  margin-bottom: 12px;
+}
+
+.cd p {
+  margin: 0 0 14px;
+  max-width: 360px;
+  opacity: 0.7;
+  font-size: 15px;
+}
+
+.tg {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.tg span {
+  border: 1px solid currentColor;
+  border-radius: 99px;
+  padding: 3px 12px;
+  font-size: 12px;
+  font-weight: 600;
+  opacity: 0.75;
+}
+
+.cd .vw {
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.mk {
+  background: #08080b;
+  border: 1px solid #ffffff1f;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  color: var(--tx);
+}
+
+.dots {
+  display: flex;
+  gap: 6px;
+  padding: 10px 12px;
+  border-bottom: 1px solid #ffffff14;
+}
+
+.dots i {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #ffffff30;
+}
+
+.mk .bd {
+  flex: 1;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-height: 0;
+}
+
+.b1 {
+  flex: 1.4;
+  border-radius: 6px;
+  background: linear-gradient(135deg, var(--ac), #3a1a78);
+}
+
+.g3 {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+
+.g3 i {
+  background: #ffffff12;
+  border-radius: 6px;
+}
+
+.dash {
+  flex-direction: row !important;
+}
+
+.sd {
+  width: 16%;
+  background: #ffffff10;
+  border-radius: 6px;
+}
+
+.mn {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.kp {
+  display: flex;
+  gap: 8px;
+  height: 26%;
+}
+
+.kp i {
+  flex: 1;
+  background: #ffffff12;
+  border-radius: 6px;
+}
+
+.bars {
+  flex: 1;
+  display: flex;
+  align-items: flex-end;
+  gap: 7px;
+}
+
+.bars i {
+  flex: 1;
+  background: var(--ac);
+  border-radius: 4px 4px 0 0;
+}
+
+.rw {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex: 1;
+  max-height: 25%;
+}
+
+.rw b {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: var(--ac);
+  flex: none;
+}
+
+.rw span {
+  flex: 1;
+  height: 8px;
+  border-radius: 99px;
+  background: #ffffff1c;
+}
+
+.rw span + span {
+  display: none;
+}
+
+@include mobile {
+  .cd {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr;
+    height: 64vh;
+  }
+
+  .cd p {
+    display: none;
+  }
+
+  .cd .big {
+    margin-bottom: 8px;
+  }
+}
+
+.pj > h2 {
+  font-size: clamp(36px, 5.4vw, 76px);
+}
+
+.cd .big {
+  font-size: clamp(30px, 4.6vw, 64px);
+}
+
+.cd p {
+  font-size: clamp(15px, 1.3vw, 18px);
+  max-width: 440px;
+}
+
+.cd .top,
+.cd .vw {
+  font-size: clamp(14px, 1.2vw, 17px);
+}
+
+.tg span {
+  font-size: clamp(12px, 1vw, 14px);
+}

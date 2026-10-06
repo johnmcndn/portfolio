@@ -1,0 +1,152 @@
+@use 'variables' as *;
+
+// Top navigation
+
+nav {
+  position: absolute;
+  z-index: 5;
+  top: env(safe-area-inset-top, 0px);
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px clamp(18px, 4vw, 60px);
+  font-size: 14px;
+  font-weight: 600;
+}
+
+nav .lg {
+  font: 400 26px $font-display;
+  letter-spacing: 0.02em;
+}
+
+nav a {
+  margin-left: 26px;
+}
+
+nav a:hover {
+  color: var(--ac);
+}
+
+nav {
+  font-size: clamp(15px, 1.2vw, 18px);
+}
+
+nav .lg {
+  font-size: 32px;
+}
+
+// Logo and menu button stay above the mobile overlay.
+nav .lg {
+  position: relative;
+  z-index: 2;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+}
+
+.nav-toggle {
+  display: none;
+}
+
+// Mobile: links move into a full-screen menu opened by a two-line button.
+@include mobile {
+  nav {
+    padding-block: 18px;
+  }
+
+  .nav-toggle {
+    position: relative;
+    z-index: 2;
+    display: block;
+    width: 44px;
+    height: 44px;
+    margin-right: -10px;
+    padding: 0;
+    border: 0;
+    background: none;
+    color: inherit;
+    cursor: pointer;
+
+    span {
+      position: absolute;
+      left: 11px;
+      right: 11px;
+      height: 2px;
+      background: currentColor;
+      transition: transform 0.4s cubic-bezier(0.7, 0, 0.2, 1);
+    }
+
+    span:nth-child(1) {
+      top: 17px;
+    }
+
+    span:nth-child(2) {
+      top: 25px;
+    }
+  }
+
+  nav.is-open .nav-toggle {
+    span:nth-child(1) {
+      transform: translateY(4px) rotate(45deg);
+    }
+
+    span:nth-child(2) {
+      transform: translateY(-4px) rotate(-45deg);
+    }
+  }
+
+  .nav-links {
+    position: fixed;
+    inset: 0;
+    z-index: 1;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 6px;
+    padding: 0 clamp(18px, 6vw, 40px);
+    background: rgba(4, 4, 5, 0.97);
+    opacity: 0;
+    visibility: hidden;
+    transition:
+      opacity 0.35s ease,
+      visibility 0s linear 0.35s;
+
+    a {
+      margin: 0;
+      font: 400 clamp(44px, 14vw, 76px) / 1.1 $font-display;
+      text-transform: uppercase;
+      transform: translateY(40px);
+      opacity: 0;
+      transition:
+        transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1),
+        opacity 0.4s ease,
+        color 0.2s;
+    }
+  }
+
+  nav.is-open .nav-links {
+    opacity: 1;
+    visibility: visible;
+    transition-delay: 0s;
+
+    a {
+      transform: none;
+      opacity: 1;
+
+      @for $i from 1 through 4 {
+        &:nth-child(#{$i}) {
+          transition-delay: #{0.08 * $i}s;
+        }
+      }
+    }
+  }
+}
+
+// Stop the page scrolling behind the open menu.
+html.menu-open {
+  overflow: hidden;
+}

@@ -1,0 +1,24 @@
+// Brand colours
+$accent: #a05cff;
+$ink: #050505;
+$paper: #f2f0eb;
+
+// Fonts are loaded with next/font in app/layout.tsx and exposed as CSS variables.
+$font-display: var(--font-anton), Impact, sans-serif;
+$font-body: var(--font-manrope), system-ui, sans-serif;
+
+// Responsive breakpoints
+$bp-mobile: 640px;
+$bp-uhd: 2200px; // 1440p / 4K monitors
+
+@mixin mobile {
+  @media (max-width: $bp-mobile) {
+    @content;
+  }
+}
+
+@mixin uhd {
+  @media (min-width: $bp-uhd) {
+    @content;
+  }
+}

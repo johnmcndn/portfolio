@@ -1,0 +1,239 @@
+@use 'variables' as *;
+
+// 1440p / 4K: the clamp() caps used elsewhere stop growing around 2000px,
+// so above $bp-uhd every size is expressed in vw and keeps scaling with the screen.
+
+@include uhd {
+  body {
+    font-size: 0.85vw;
+  }
+
+  // Navigation
+  nav {
+    padding: 1.1vw 4vw;
+    font-size: 1.2vw;
+  }
+
+  nav .lg {
+    font-size: 1.6vw;
+  }
+
+  nav a {
+    margin-left: 1.4vw;
+  }
+
+  // Hero
+  .hi {
+    padding: 0 4vw;
+    font-size: 2.4vw;
+    margin-bottom: 0.6vw;
+  }
+
+  .nm {
+    padding: 0 4vw;
+    font-size: 12.5vw;
+  }
+
+  .role {
+    padding: 1vw 4vw 0;
+    font-size: 2.2vw;
+    max-width: 42vw;
+  }
+
+  .wrap {
+    padding: 0 4vw;
+  }
+
+  .lab {
+    font-size: 1.1vw;
+    margin-bottom: 0.9vw;
+  }
+
+  // Skills strip
+  .mq {
+    padding: 1.1vw 0;
+  }
+
+  .tk span {
+    font-size: 8vw;
+  }
+
+  // About
+  .st .big {
+    font-size: 6vw;
+  }
+
+  .st p {
+    font-size: 1.9vw;
+    max-width: 38vw;
+    margin-top: 1.3vw;
+  }
+
+  // Services and Experience rows
+  .sr {
+    padding: 0.9vw 0;
+    gap: 1.2vw;
+  }
+
+  .sr .n {
+    font-size: 1.2vw;
+    width: 2.6vw;
+  }
+
+  .sr .t {
+    font-size: 5vw;
+  }
+
+  .sr .m {
+    font-size: 1.3vw;
+  }
+
+  .ex .sr .n {
+    font-size: 1.2vw;
+    width: 10.5vw;
+  }
+
+  .ex .sr .t {
+    font-size: 2.2vw;
+  }
+
+  .ex .sr .m {
+    font-size: 1.3vw;
+  }
+
+  .ex .ed {
+    font-size: 1.3vw;
+    max-width: 42vw;
+    margin-top: 1.2vw;
+  }
+
+  // Behind the work
+  .px .mid .big {
+    font-size: 6vw;
+  }
+
+  .fr .cap {
+    font-size: 0.75vw;
+    left: 0.7vw;
+    top: 0.6vw;
+  }
+
+  .ui {
+    inset: 2.3vw 0.8vw 0.8vw;
+    gap: 0.5vw;
+  }
+
+  .ui .bar {
+    height: 0.4vw;
+  }
+
+  .ui .hr {
+    font-size: 3.4vw;
+    padding: 0.6vw;
+  }
+
+  .sw i {
+    height: 1.3vw;
+  }
+
+  .fr pre {
+    font-size: 1.05vw;
+    inset: 2.3vw 0.9vw 0.7vw;
+  }
+
+  .phn {
+    top: 2.4vw;
+    padding: 0.7vw;
+    gap: 0.4vw;
+  }
+
+  .phn .l {
+    height: 0.7vw;
+  }
+
+  .phn .l.s {
+    height: 0.4vw;
+  }
+
+  .phn .b {
+    font-size: 0.55vw;
+    padding: 0.35vw;
+    margin-top: 0.3vw;
+  }
+
+  .phn .lv {
+    font-size: 0.55vw;
+    padding-bottom: 2vw;
+  }
+
+  .lv i {
+    width: 0.35vw;
+    height: 0.35vw;
+  }
+
+  // Projects
+  .pj > h2 {
+    font-size: 5.4vw;
+  }
+
+  .cd {
+    height: 54vh;
+    padding: 2.6vw;
+    gap: 3vw;
+  }
+
+  .cd .big {
+    font-size: 4.6vw;
+  }
+
+  .cd p {
+    font-size: 1.3vw;
+    max-width: 22vw;
+  }
+
+  .cd .top,
+  .cd .vw {
+    font-size: 1.2vw;
+  }
+
+  .tg span {
+    font-size: 1vw;
+    padding: 0.15vw 0.6vw;
+  }
+
+  .dots i {
+    width: 0.4vw;
+    height: 0.4vw;
+  }
+
+  .rw b {
+    width: 1.3vw;
+    height: 1.3vw;
+  }
+
+  .rw span {
+    height: 0.4vw;
+  }
+
+  // Contact and footer
+  .ct .big {
+    font-size: 11vw;
+  }
+
+  .mag {
+    font-size: 1.5vw;
+    padding: 0.9vw 1.9vw;
+    margin-top: 1.8vw;
+  }
+
+  .sl {
+    font-size: 1.4vw;
+    margin-top: 1.8vw;
+    gap: 1.5vw;
+  }
+
+  footer {
+    font-size: 1.1vw;
+    padding: 1.1vw 0 1.7vw;
+  }
+}

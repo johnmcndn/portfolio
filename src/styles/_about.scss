@@ -1,0 +1,31 @@
+@use 'variables' as *;
+
+// About statement
+
+.st {
+  padding: clamp(80px, 12vh, 140px) 0 0;
+}
+
+.st .big {
+  font-size: clamp(30px, 4.6vw, 64px);
+}
+
+.st .big span {
+  display: block;
+  overflow: hidden;
+}
+
+.st p {
+  max-width: 480px;
+  color: var(--dim);
+  margin-top: 24px;
+}
+
+.st .big {
+  font-size: clamp(38px, 6vw, 88px);
+}
+
+.st p {
+  font-size: clamp(18px, 1.9vw, 26px);
+  max-width: 720px;
+}

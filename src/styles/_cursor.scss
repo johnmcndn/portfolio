@@ -1,0 +1,50 @@
+@use 'variables' as *;
+
+// Liquid cursor and Lenis helpers
+
+.cur-on,
+.cur-on * {
+  cursor: none !important;
+}
+
+#cur {
+  position: fixed;
+  left: 0;
+  top: 0;
+  pointer-events: none;
+  z-index: 200;
+  opacity: 0;
+}
+
+#curd {
+  position: absolute;
+  left: 0;
+  top: 0;
+  transform: translate(-50%, -50%);
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 1.5px solid $paper;
+  display: grid;
+  place-items: center;
+  font: 600 13px/1 $font-body;
+  color: $ink;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+#liq {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 190;
+  filter: url(#goo);
+}
+
+#liq i {
+  position: absolute;
+  left: 0;
+  top: 0;
+  border-radius: 50%;
+  background: $accent;
+}

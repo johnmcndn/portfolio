@@ -1,0 +1,28 @@
+@use 'variables' as *;
+
+// Scroll-driven skills strip
+
+.mq {
+  overflow: hidden;
+  white-space: nowrap;
+  margin-top: clamp(40px, 7vh, 80px);
+  border-block: 1px solid var(--ln);
+  padding: 22px 0;
+}
+
+.tk {
+  display: inline-flex;
+}
+
+.tk span {
+  font: 400 clamp(44px, 8vw, 120px)/1 $font-display;
+  text-transform: uppercase;
+  padding-right: 0.6em;
+  color: var(--dim);
+}
+
+.tk span::after {
+  content: '/';
+  color: var(--ac);
+  margin-left: 0.6em;
+}

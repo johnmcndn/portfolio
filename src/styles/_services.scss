@@ -1,0 +1,105 @@
+@use 'variables' as *;
+
+// Services rows (also used by Experience)
+
+.sv {
+  margin-top: clamp(60px, 9vh, 100px);
+}
+
+.sr {
+  position: relative;
+  display: flex;
+  align-items: baseline;
+  gap: 22px;
+  padding: 18px 0;
+  overflow: hidden;
+}
+
+.sr::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 1px;
+  background: var(--ln);
+}
+
+.sr::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--ac);
+  transform: translateY(101%);
+  transition: transform 0.45s cubic-bezier(0.7, 0, 0.2, 1);
+}
+
+.sr:hover::after {
+  transform: none;
+}
+
+.sr > * {
+  position: relative;
+  z-index: 1;
+}
+
+.sr .n {
+  font-weight: 600;
+  width: 36px;
+  color: var(--dim);
+  font-size: 14px;
+}
+
+.sr .t {
+  font: 400 clamp(26px, 3.6vw, 48px)/1 $font-display;
+  text-transform: uppercase;
+  flex: 1;
+  transition: 0.35s;
+}
+
+.sr .m {
+  color: var(--dim);
+  font-size: 14px;
+  text-align: right;
+}
+
+.sr:hover .t {
+  transform: translateX(18px);
+  color: $ink;
+}
+
+.sr:hover .n,
+.sr:hover .m {
+  color: $ink;
+}
+
+@include mobile {
+  .sr .m {
+    display: none;
+  }
+}
+
+.sr .n {
+  font-size: clamp(15px, 1.2vw, 18px);
+  width: 48px;
+}
+
+.sr .m {
+  font-size: clamp(15px, 1.3vw, 19px);
+}
+
+.sr .t {
+  font-size: clamp(34px, 5vw, 68px);
+}
+
+@include mobile {
+  .sr .t {
+    font-size: clamp(30px, 9vw, 44px);
+  }
+}
+
+// Closing hairline under the last services row.
+.sr--cap {
+  padding: 0;
+  height: 1px;
+}

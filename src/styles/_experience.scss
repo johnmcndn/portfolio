@@ -1,0 +1,85 @@
+@use 'variables' as *;
+
+// Experience list
+
+.ex {
+  margin-top: clamp(80px, 12vh, 130px);
+}
+
+.ex .sr .n {
+  width: 170px;
+  flex: none;
+  font-size: 13px;
+  white-space: nowrap;
+}
+
+.ex .sr .t {
+  font: 600 clamp(16px, 1.6vw, 20px)/1.3 $font-body;
+  text-transform: none;
+}
+
+.ex .sr .m {
+  display: block;
+  flex: none;
+  max-width: 40%;
+}
+
+.ex .ed {
+  margin-top: 22px;
+  color: var(--dim);
+  font-size: 14px;
+  max-width: 640px;
+}
+
+@include mobile {
+  .ex .sr {
+    flex-wrap: wrap;
+    gap: 4px 14px;
+  }
+
+  .ex .sr .n {
+    width: 100%;
+  }
+
+  .ex .sr .t {
+    flex: 1 1 100%;
+  }
+
+  .ex .sr .m {
+    max-width: none;
+    text-align: left;
+  }
+}
+
+.ex .sr .n {
+  font-size: clamp(14px, 1.2vw, 17px);
+  width: 200px;
+}
+
+.ex .sr .t {
+  font: 600 clamp(20px, 2.2vw, 30px)/1.3 $font-body;
+}
+
+.ex .sr .m {
+  font-size: clamp(15px, 1.3vw, 19px);
+  max-width: 36%;
+}
+
+.ex .ed {
+  font-size: clamp(15px, 1.3vw, 18px);
+  max-width: 820px;
+}
+
+@include mobile {
+  .ex .sr .n {
+    width: 100%;
+  }
+
+  .ex .sr .m {
+    max-width: none;
+  }
+
+  .ex .sr .t {
+    font-size: clamp(19px, 5.4vw, 24px);
+  }
+}

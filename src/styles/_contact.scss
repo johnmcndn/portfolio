@@ -1,0 +1,59 @@
+@use 'variables' as *;
+
+// Contact call to action and footer
+
+.ct {
+  padding: clamp(100px, 16vh, 170px) 0 70px;
+  text-align: center;
+}
+
+.ct .big {
+  font-size: clamp(52px, 11vw, 170px);
+}
+
+.mag {
+  display: inline-block;
+  margin-top: 34px;
+  padding: 16px 34px;
+  border-radius: 999px;
+  background: var(--ac);
+  color: $ink;
+  font-weight: 600;
+  font-size: 16px;
+}
+
+footer {
+  display: flex;
+  justify-content: space-between;
+  padding: 22px 0 34px;
+  border-top: 1px solid var(--ln);
+  color: var(--dim);
+  font-size: 13px;
+}
+
+.sl {
+  display: flex;
+  gap: 28px;
+  justify-content: center;
+  margin-top: 34px;
+  font-weight: 600;
+  font-size: 15px;
+  color: var(--dim);
+}
+
+.sl a:hover {
+  color: var(--ac);
+}
+
+.mag {
+  font-size: clamp(17px, 1.5vw, 22px);
+  padding: 18px 38px;
+}
+
+.sl {
+  font-size: clamp(16px, 1.4vw, 20px);
+}
+
+footer {
+  font-size: clamp(14px, 1.1vw, 16px);
+}
