@@ -36,9 +36,8 @@ export default function RootLayout({
   return (
     <html lang='en' className={`${anton.variable} ${manrope.variable}`}>
       <body>
-        <Cursor />
-        <SmoothScroll />
-        {children}
+        {/* <Cursor /> */}
+        <SmoothScroll>{children}</SmoothScroll>
       </body>
     </html>
   );

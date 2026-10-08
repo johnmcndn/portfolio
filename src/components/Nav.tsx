@@ -1,28 +1,38 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import { ScrollSmoother } from 'gsap/ScrollSmoother';
 import { navLinks } from '@/data/content';
 
-/**
- * Desktop: logo on the left, links on the right.
- * Mobile (see styles/_nav.scss): links live in a full-screen menu opened by the button.
- */
-export default function Nav() {
+const Nav = () => {
   const [open, setOpen] = useState(false);
+
+  const handleNavClick = (
+    event: React.MouseEvent<HTMLAnchorElement>,
+    href: string,
+  ) => {
+    event.preventDefault(); // stop the browser's instant jump
+    setOpen(false); // close the mobile menu
+
+    // wait one frame so html.menu-open is removed before scrolling
+    requestAnimationFrame(() => {
+      const smoother = ScrollSmoother.get(); // the one created in SmoothScroll.tsx
+
+      if (smoother) {
+        smoother.scrollTo(href, true, 'top 120px'); // true = animated
+      } else {
+        document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' });
+      }
+    });
+  };
 
   useEffect(() => {
     if (!open) return;
 
-    const onKeyDown = (event: KeyboardEvent) => {
-      if (event.key === 'Escape') setOpen(false);
-    };
-
     document.documentElement.classList.add('menu-open');
-    document.addEventListener('keydown', onKeyDown);
 
     return () => {
       document.documentElement.classList.remove('menu-open');
-      document.removeEventListener('keydown', onKeyDown);
     };
   }, [open]);
 
@@ -46,11 +56,17 @@ export default function Nav() {
 
       <div id='nav-links' className='nav-links'>
         {navLinks.map(({ href, label }) => (
-          <a key={href} href={href} onClick={() => setOpen(false)}>
+          <a
+            key={href}
+            href={href}
+            onClick={event => handleNavClick(event, href)}
+          >
             {label}
           </a>
         ))}
       </div>
     </nav>
   );
-}
+};
+
+export default Nav;

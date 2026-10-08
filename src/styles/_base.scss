@@ -27,7 +27,13 @@ body {
   background: var(--bg);
   color: var(--tx);
   font: 400 16px/1.6 $font-body;
-  overflow-x: clip;
+  overflow-x: hidden;
+  overscroll-behavior: none;
+}
+
+#smooth-content {
+  overflow: visible;
+  width: 100%;
 }
 
 a {
