@@ -2,29 +2,32 @@
 
 import React, { useRef } from 'react';
 import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { ScrollSmoother } from 'gsap/ScrollSmoother';
 import { useGSAP } from '@gsap/react';
+import { ScrollSmoother } from 'gsap/ScrollSmoother';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
-gsap.registerPlugin(useGSAP, ScrollTrigger, ScrollSmoother);
+function Smoother() {
+  useGSAP(() => {
+    gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
+
+    ScrollSmoother.create({
+      wrapper: '#smooth-wrapper',
+      content: '#smooth-content',
+      smooth: 1.2,
+    });
+  }, []);
+
+  return null;
+}
 
 const SmoothScroll = ({ children }: { children: React.ReactNode }) => {
-  const main = useRef<HTMLDivElement>(null);
-  const smoother = useRef<ScrollSmoother | null>(null);
-
-  useGSAP(
-    () => {
-      smoother.current = ScrollSmoother.create({
-        smooth: 1.5,
-      });
-    },
-    { scope: main },
-  );
-
   return (
-    <div id='smooth-wrapper' ref={main}>
-      <div id='smooth-content'>{children}</div>
-    </div>
+    <>
+      <Smoother />
+      <div id='smooth-wrapper'>
+        <div id='smooth-content'>{children}</div>
+      </div>
+    </>
   );
 };
 
