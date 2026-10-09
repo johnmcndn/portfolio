@@ -34,10 +34,6 @@
   display: block;
 }
 
-.sk * {
-  stroke-dasharray: 1;
-}
-
 .ui {
   position: absolute;
   inset: 44px 16px 16px;
@@ -194,7 +190,6 @@
   top: 36%;
   text-align: center;
   pointer-events: none;
-  mix-blend-mode: difference;
 }
 
 .px .mid .big {

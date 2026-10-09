@@ -1,101 +1,57 @@
 'use client';
 
-import { useRef } from 'react';
-import { MOTION_OK, gsap, useGSAP } from '@/lib/gsap';
+import gsap from 'gsap';
+import { useGSAP } from '@gsap/react';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { ScrollSmoother } from 'gsap/ScrollSmoother';
 
-/**
- * "Behind the work": four frames (idea, design, code, launch) that drift at
- * different speeds while the section scrolls past.
- */
-export default function Parallax() {
-  const root = useRef<HTMLElement>(null);
+gsap.registerPlugin(useGSAP, ScrollTrigger, ScrollSmoother);
 
-  useGSAP(
-    () => {
-      const mm = gsap.matchMedia();
+const Parallax = () => {
+  useGSAP(() => {
+    ScrollTrigger.create({
+      trigger: '.mid .big',
+      pin: true,
+      start: 'center center',
+      end: '+=500',
+    });
 
-      mm.add(MOTION_OK, () => {
-        // Each frame moves at its own speed (data-speed).
-        gsap.utils.toArray<HTMLElement>('.fr').forEach(frame => {
-          const distance = Number(frame.dataset.speed) * 5;
-          gsap.fromTo(
-            frame,
-            { y: () => -distance },
-            {
-              y: () => distance,
-              ease: 'none',
-              scrollTrigger: {
-                trigger: root.current,
-                start: 'top bottom',
-                end: 'bottom top',
-                scrub: true,
-                invalidateOnRefresh: true,
-              },
-            },
-          );
-        });
+    // --- Skew the frames while scrolling ---
+    const frames = gsap.utils.toArray<HTMLElement>('.f1, .f2, .f3, .f4');
+    const proxy = { skew: 0 };
+    const skewSetter = gsap.quickSetter(frames, 'skewY', 'deg'); // fast
+    const clamp = gsap.utils.clamp(-20, 20); // never skew more than 20 degrees
 
-        // Frame 1: the wireframe sketch draws itself
-        gsap.fromTo(
-          '.sk *',
-          { strokeDashoffset: 1 },
-          {
-            strokeDashoffset: 0,
-            duration: 1.4,
-            stagger: 0.12,
-            ease: 'power2.out',
-            scrollTrigger: { trigger: '.f1', start: 'top 85%' },
-          },
-        );
+    // make the right edge "stick" to the scroll bar. force3D improves performance
+    gsap.set(frames, { transformOrigin: 'right center', force3D: true });
 
-        // Frame 3: code lines type in one by one
-        gsap.from('.f3 .cl', {
-          opacity: 0,
-          x: -14,
-          duration: 0.6,
-          stagger: 0.18,
-          ease: 'power3.out',
-          scrollTrigger: { trigger: '.f3', start: 'top 80%' },
-        });
+    ScrollTrigger.create({
+      trigger: '.px', // only react while this section is on screen
+      start: 'top bottom',
+      end: 'bottom top',
+      onUpdate: self => {
+        const skew = clamp(self.getVelocity() / -300);
 
-        // Frame 4: phone UI bars grow in
-        gsap.from('.phn .l, .phn .b', {
-          scaleX: 0,
-          transformOrigin: 'left',
-          duration: 0.7,
-          stagger: 0.12,
-          ease: 'power3.out',
-          scrollTrigger: { trigger: '.f4', start: 'top 80%' },
-        });
-
-        // Centre headline floats against the frames
-        gsap.fromTo(
-          '.mid',
-          { y: 60 },
-          {
-            y: -60,
-            ease: 'none',
-            scrollTrigger: {
-              trigger: root.current,
-              start: 'top bottom',
-              end: 'bottom top',
-              scrub: true,
-            },
-          },
-        );
-      });
-
-      return () => mm.revert();
-    },
-    { scope: root },
-  );
+        // Only react to a stronger skew; the tween eases back to 0 on its own
+        if (Math.abs(skew) > Math.abs(proxy.skew)) {
+          proxy.skew = skew;
+          gsap.to(proxy, {
+            skew: 0,
+            duration: 0.8,
+            ease: 'power3',
+            overwrite: true,
+            onUpdate: () => skewSetter(proxy.skew),
+          });
+        }
+      },
+    });
+  });
 
   return (
-    <section className='px' id='px' ref={root}>
-      <div className='fr f1' data-speed='-18'>
+    <section className='px' id='px'>
+      <div className='fr f1'>
         <span className='cap'>01 — Idea</span>
         <svg
-          className='sk'
           viewBox='0 0 100 125'
           fill='none'
           stroke='#f2f0eb'
@@ -103,40 +59,19 @@ export default function Parallax() {
           strokeWidth='.7'
           strokeLinecap='round'
         >
-          <rect pathLength={1} x='12' y='26' width='76' height='12' rx='2' />
-          <rect pathLength={1} x='12' y='44' width='76' height='34' rx='2' />
-          <path
-            pathLength={1}
-            d='M12 44 L88 78 M88 44 L12 78'
-            strokeOpacity='.25'
-          />
-          <rect pathLength={1} x='12' y='84' width='22' height='22' rx='2' />
-          <rect pathLength={1} x='39' y='84' width='22' height='22' rx='2' />
-          <rect pathLength={1} x='66' y='84' width='22' height='22' rx='2' />
-          <circle
-            pathLength={1}
-            cx='82'
-            cy='32'
-            r='3'
-            stroke='#a05cff'
-            strokeOpacity='1'
-          />
-          <path
-            pathLength={1}
-            d='M70 14 Q80 8 84 24'
-            stroke='#a05cff'
-            strokeOpacity='1'
-          />
-          <path
-            pathLength={1}
-            d='M82 20 L84 25 L88 21'
-            stroke='#a05cff'
-            strokeOpacity='1'
-          />
+          <rect x='12' y='26' width='76' height='12' rx='2' />
+          <rect x='12' y='44' width='76' height='34' rx='2' />
+          <path d='M12 44 L88 78 M88 44 L12 78' strokeOpacity='.25' />
+          <rect x='12' y='84' width='22' height='22' rx='2' />
+          <rect x='39' y='84' width='22' height='22' rx='2' />
+          <rect x='66' y='84' width='22' height='22' rx='2' />
+          <circle cx='82' cy='32' r='3' stroke='#a05cff' strokeOpacity='1' />
+          <path d='M70 14 Q80 8 84 24' stroke='#a05cff' strokeOpacity='1' />
+          <path d='M82 20 L84 25 L88 21' stroke='#a05cff' strokeOpacity='1' />
         </svg>
       </div>
 
-      <div className='fr f2' data-speed='22'>
+      <div className='fr f2'>
         <span className='cap'>02 — Design</span>
         <div className='ui'>
           <div className='bar' />
@@ -156,7 +91,7 @@ export default function Parallax() {
         </h2>
       </div>
 
-      <div className='fr f3' data-speed='-30'>
+      <div className='fr f3'>
         <span className='cap'>03 — Code</span>
         <pre>
           <span className='cl'>
@@ -179,7 +114,7 @@ export default function Parallax() {
         </pre>
       </div>
 
-      <div className='fr f4' data-speed='14'>
+      <div className='fr f4'>
         <span className='cap'>04 — Launch</span>
         <div className='phn'>
           <div className='l' />
@@ -194,4 +129,6 @@ export default function Parallax() {
       </div>
     </section>
   );
-}
+};
+
+export default Parallax;

@@ -13,7 +13,7 @@ function Smoother() {
     ScrollSmoother.create({
       wrapper: '#smooth-wrapper',
       content: '#smooth-content',
-      smooth: 1.2,
+      smooth: 1.5,
     });
   }, []);
 
