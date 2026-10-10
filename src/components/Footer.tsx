@@ -1,6 +1,6 @@
 import { site } from '@/data/content';
 
-export default function Footer() {
+const Footer = () => {
   return (
     <footer>
       <span>© {site.year} mac.dev</span>
@@ -9,4 +9,6 @@ export default function Footer() {
       </span>
     </footer>
   );
-}
+};
+
+export default Footer;

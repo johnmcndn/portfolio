@@ -1,6 +1,5 @@
 import type { Metadata, Viewport } from 'next';
 import { Anton, Manrope } from 'next/font/google';
-import Cursor from '@/components/Cursor';
 import SmoothScroll from '@/components/SmoothScroll';
 import '@/styles/globals.scss';
 
@@ -36,7 +35,6 @@ export default function RootLayout({
   return (
     <html lang='en' className={`${anton.variable} ${manrope.variable}`}>
       <body>
-        {/* <Cursor /> */}
         <SmoothScroll>{children}</SmoothScroll>
       </body>
     </html>

@@ -1,24 +1,8 @@
-'use client';
-
-import { useRef } from 'react';
-import { MOTION_OK, gsap, useGSAP } from '@/lib/gsap';
-import { revealRows } from '@/lib/animations';
 import { services } from '@/data/content';
 
-export default function Services() {
-  const root = useRef<HTMLElement>(null);
-
-  useGSAP(
-    () => {
-      const mm = gsap.matchMedia();
-      mm.add(MOTION_OK, () => revealRows(root.current));
-      return () => mm.revert();
-    },
-    { scope: root },
-  );
-
+const Services = () => {
   return (
-    <section className='sv' id='sv' ref={root}>
+    <section className='sv' id='sv'>
       {services.map(({ number, title, tools }) => (
         <div className='sr' key={number}>
           <span className='n'>{number}</span>
@@ -29,4 +13,6 @@ export default function Services() {
       <div className='sr sr--cap' aria-hidden='true' />
     </section>
   );
-}
+};
+
+export default Services;

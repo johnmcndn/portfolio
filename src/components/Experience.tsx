@@ -1,25 +1,8 @@
-'use client';
-
-import { useRef } from 'react';
-import { MOTION_OK, gsap, useGSAP } from '@/lib/gsap';
-import { revealRows } from '@/lib/animations';
 import { education, experience } from '@/data/content';
 
-/** Deliberately quiet: small dim rows that reuse the services row style. */
-export default function Experience() {
-  const root = useRef<HTMLElement>(null);
-
-  useGSAP(
-    () => {
-      const mm = gsap.matchMedia();
-      mm.add(MOTION_OK, () => revealRows(root.current));
-      return () => mm.revert();
-    },
-    { scope: root },
-  );
-
+const Experience = () => {
   return (
-    <section className='ex' id='ex' ref={root}>
+    <section className='ex' id='ex'>
       <div className='lab'>Experience</div>
       {experience.map(({ period, role, company }) => (
         <div className='sr' key={`${company}-${period}`}>
@@ -31,4 +14,6 @@ export default function Experience() {
       <p className='ed'>{education}</p>
     </section>
   );
-}
+};
+
+export default Experience;

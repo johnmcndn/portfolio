@@ -4,7 +4,7 @@ const BAR_HEIGHTS = [35, 60, 45, 80, 55, 95];
 const ROW_COUNT = 4;
 
 /** Tiny wireframe previews shown inside each project card. */
-export default function Mockup({ kind }: { kind: MockupKind }) {
+const Mockup = ({ kind }: { kind: MockupKind }) => {
   return (
     <div className='mk' aria-hidden='true'>
       <div className='dots'>
@@ -54,4 +54,6 @@ export default function Mockup({ kind }: { kind: MockupKind }) {
       )}
     </div>
   );
-}
+};
+
+export default Mockup;

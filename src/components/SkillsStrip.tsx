@@ -10,7 +10,7 @@ const LOOPED_SKILLS = [...skills, ...skills];
 const LOOP_SECONDS = 100; // time for one full loop (bigger = slower)
 const HOVER_SPEED = 0.2; // 1 = normal speed, 0.2 = 20% speed while hovered
 
-export default function SkillsStrip() {
+const SkillsStrip = () => {
   const root = useRef<HTMLDivElement>(null);
   const track = useRef<HTMLDivElement>(null);
   const loop = useRef<gsap.core.Tween | null>(null);
@@ -51,4 +51,6 @@ export default function SkillsStrip() {
       </div>
     </div>
   );
-}
+};
+
+export default SkillsStrip;

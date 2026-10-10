@@ -6,7 +6,7 @@ import { useGSAP } from '@gsap/react';
 import { ScrollSmoother } from 'gsap/ScrollSmoother';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
-function Smoother() {
+const Smoother = () => {
   useGSAP(() => {
     gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
 
@@ -18,7 +18,7 @@ function Smoother() {
   }, []);
 
   return null;
-}
+};
 
 const SmoothScroll = ({ children }: { children: React.ReactNode }) => {
   return (

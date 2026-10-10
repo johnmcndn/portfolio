@@ -15,6 +15,7 @@
   overflow: hidden;
 }
 
+// Top hairline
 .sr::before {
   content: '';
   position: absolute;
@@ -25,6 +26,7 @@
   background: var(--ln);
 }
 
+// Hover: purple fill slides up from the bottom
 .sr::after {
   content: '';
   position: absolute;
@@ -44,25 +46,26 @@
 }
 
 .sr .n {
+  width: 48px;
+  font-size: clamp(15px, 1.2vw, 18px);
   font-weight: 600;
-  width: 36px;
   color: var(--dim);
-  font-size: 14px;
 }
 
 .sr .t {
-  font: 400 clamp(26px, 3.6vw, 48px)/1 $font-display;
-  text-transform: uppercase;
   flex: 1;
+  font: 400 clamp(34px, 5vw, 68px) / 1 $font-display;
+  text-transform: uppercase;
   transition: 0.35s;
 }
 
 .sr .m {
+  font-size: clamp(15px, 1.3vw, 19px);
   color: var(--dim);
-  font-size: 14px;
   text-align: right;
 }
 
+// Hover: title slides right and text turns dark
 .sr:hover .t {
   transform: translateX(18px);
   color: $ink;
@@ -74,27 +77,12 @@
 }
 
 @include mobile {
-  .sr .m {
-    display: none;
-  }
-}
-
-.sr .n {
-  font-size: clamp(15px, 1.2vw, 18px);
-  width: 48px;
-}
-
-.sr .m {
-  font-size: clamp(15px, 1.3vw, 19px);
-}
-
-.sr .t {
-  font-size: clamp(34px, 5vw, 68px);
-}
-
-@include mobile {
   .sr .t {
     font-size: clamp(30px, 9vw, 44px);
+  }
+
+  .sr .m {
+    display: none;
   }
 }
 

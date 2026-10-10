@@ -6,7 +6,7 @@ import { projects } from '@/data/content';
 import Mockup from './Mockup';
 
 /** Cards stack with `position: sticky`; earlier cards shrink and fade as the next one arrives. */
-export default function Projects() {
+const Projects = () => {
   const root = useRef<HTMLElement>(null);
 
   useGSAP(
@@ -111,4 +111,6 @@ export default function Projects() {
       )}
     </section>
   );
-}
+};
+
+export default Projects;
