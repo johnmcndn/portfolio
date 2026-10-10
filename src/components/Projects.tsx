@@ -16,20 +16,34 @@ const Projects = () => {
 
   useGSAP(
     () => {
-      const cards = gsap.utils.toArray<HTMLElement>('.cd');
-      const lastCard = cards[cards.length - 1];
+      const mm = gsap.matchMedia();
 
-      // Every card except the last sticks near the top until the last card arrives
-      cards.slice(0, -1).forEach(card => {
-        ScrollTrigger.create({
-          trigger: card,
-          start: 'top 11%', // where the card sticks (11% down from the top of the screen)
-          endTrigger: lastCard,
-          end: 'top 11%', // release when the last card reaches the same spot
-          pin: true,
-          pinSpacing: false, // the next card keeps flowing up underneath
+      // Mouse and trackpad only. On touch screens the CSS `position: sticky` in
+      // _projects.scss does the job natively, which is much smoother on phones.
+      mm.add('(hover: hover) and (pointer: fine)', () => {
+        const section = root.current!;
+        const cards = gsap.utils.toArray<HTMLElement>('.cd');
+        const lastCard = cards[cards.length - 1];
+
+        // Turn the CSS sticky off so it doesn't fight the pin
+        section.classList.add('is-pinned');
+
+        // Every card except the last sticks near the top until the last card arrives
+        cards.slice(0, -1).forEach(card => {
+          ScrollTrigger.create({
+            trigger: card,
+            start: 'top 11%', // where the card sticks (11% down from the top of the screen)
+            endTrigger: lastCard,
+            end: 'top 11%', // release when the last card reaches the same spot
+            pin: true,
+            pinSpacing: false, // the next card keeps flowing up underneath
+          });
         });
+
+        return () => section.classList.remove('is-pinned');
       });
+
+      return () => mm.revert();
     },
     { scope: root },
   );

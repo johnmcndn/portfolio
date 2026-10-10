@@ -13,7 +13,7 @@
 }
 
 .cd {
-  position: relative; // was `position: sticky; top: 11vh;`
+  position: sticky; // was `position: sticky; top: 11vh;`
   height: min(54vh, 470px);
   margin-bottom: 4vh;
   border: 1px solid var(--ln);
@@ -22,6 +22,12 @@
   gap: clamp(16px, 3vw, 40px);
   padding: clamp(18px, 2.6vw, 34px);
   overflow: hidden;
+  top: 11vh;
+}
+
+.pj.is-pinned .cd {
+  position: relative;
+  top: auto;
 }
 
 .cd:nth-of-type(1) {
