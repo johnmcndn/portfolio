@@ -21,7 +21,7 @@ html {
 * {
   box-sizing: border-box;
 }
-
+// Stop taps and long-presses from selecting text or opening the browser's menu on touch screens
 body {
   margin: 0;
   background: var(--bg);
@@ -29,6 +29,8 @@ body {
   font: 400 16px/1.6 $font-body;
   overflow-x: hidden;
   overscroll-behavior: none;
+  -webkit-tap-highlight-color: transparent; // no grey flash when tapping links
+  -webkit-touch-callout: none; // iOS: no callout menu on long press
 }
 
 #smooth-content {
@@ -81,4 +83,11 @@ html.lenis body {
 
 .lab {
   font-size: clamp(14px, 1.1vw, 17px);
+}
+
+@media (hover: none) and (pointer: coarse) {
+  body {
+    -webkit-user-select: none;
+    user-select: none;
+  }
 }
