@@ -1,19 +1,19 @@
 @use 'variables' as *;
 
 // Stacking project cards and mock-ups
+// The "stick near the top" effect is done by GSAP (see Projects.tsx), not CSS.
 
 .pj {
   margin-top: clamp(80px, 12vh, 130px);
 }
 
 .pj > h2 {
-  font-size: clamp(28px, 4vw, 56px);
+  font-size: clamp(36px, 5.4vw, 76px);
   margin-bottom: 24px;
 }
 
 .cd {
-  position: sticky;
-  top: 11vh;
+  position: relative; // was `position: sticky; top: 11vh;`
   height: min(54vh, 470px);
   margin-bottom: 4vh;
   border: 1px solid var(--ln);
@@ -21,7 +21,6 @@
   grid-template-columns: 1.05fr 1fr;
   gap: clamp(16px, 3vw, 40px);
   padding: clamp(18px, 2.6vw, 34px);
-  transform-origin: 50% 0;
   overflow: hidden;
 }
 
@@ -51,19 +50,24 @@
   display: flex;
   justify-content: space-between;
   font-weight: 600;
-  font-size: 14px;
+  font-size: clamp(14px, 1.2vw, 17px);
 }
 
 .cd .big {
-  font-size: clamp(28px, 4.2vw, 60px);
+  font-size: clamp(30px, 4.6vw, 64px);
   margin-bottom: 12px;
 }
 
 .cd p {
   margin: 0 0 14px;
-  max-width: 360px;
+  max-width: 440px;
   opacity: 0.7;
-  font-size: 15px;
+  font-size: clamp(15px, 1.3vw, 18px);
+}
+
+.cd .vw {
+  font-weight: 600;
+  font-size: clamp(14px, 1.2vw, 17px);
 }
 
 .tg {
@@ -76,15 +80,12 @@
   border: 1px solid currentColor;
   border-radius: 99px;
   padding: 3px 12px;
-  font-size: 12px;
+  font-size: clamp(12px, 1vw, 14px);
   font-weight: 600;
   opacity: 0.75;
 }
 
-.cd .vw {
-  font-weight: 600;
-  font-size: 14px;
-}
+// --- Mock-ups inside the cards ---
 
 .mk {
   background: #08080b;
@@ -220,26 +221,4 @@
   .cd .big {
     margin-bottom: 8px;
   }
-}
-
-.pj > h2 {
-  font-size: clamp(36px, 5.4vw, 76px);
-}
-
-.cd .big {
-  font-size: clamp(30px, 4.6vw, 64px);
-}
-
-.cd p {
-  font-size: clamp(15px, 1.3vw, 18px);
-  max-width: 440px;
-}
-
-.cd .top,
-.cd .vw {
-  font-size: clamp(14px, 1.2vw, 17px);
-}
-
-.tg span {
-  font-size: clamp(12px, 1vw, 14px);
 }

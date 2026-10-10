@@ -1,79 +1,43 @@
 'use client';
 
 import { useRef } from 'react';
-import { MOTION_OK, gsap, useGSAP } from '@/lib/gsap';
+import gsap from 'gsap';
+import { useGSAP } from '@gsap/react';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { projects } from '@/data/content';
 import Mockup from './Mockup';
 
-/** Cards stack with `position: sticky`; earlier cards shrink and fade as the next one arrives. */
+// Register once, at the top level (not inside the component)
+gsap.registerPlugin(useGSAP, ScrollTrigger);
+
+/** Cards stick near the top of the screen and the next card slides over them. */
 const Projects = () => {
   const root = useRef<HTMLElement>(null);
 
   useGSAP(
     () => {
-      const mm = gsap.matchMedia();
+      const cards = gsap.utils.toArray<HTMLElement>('.cd');
+      const lastCard = cards[cards.length - 1];
 
-      mm.add(MOTION_OK, () => {
-        const cards = gsap.utils.toArray<HTMLElement>('.cd');
-
-        cards.slice(0, -1).forEach((card, index) => {
-          gsap.to(card, {
-            scale: 0.92,
-            opacity: 0.35,
-            ease: 'none',
-            scrollTrigger: {
-              trigger: cards[index + 1],
-              start: 'top 88%',
-              end: 'top 11%',
-              scrub: true,
-            },
-          });
-        });
-
-        gsap.from('.bars i', {
-          scaleY: 0,
-          transformOrigin: 'bottom',
-          duration: 0.8,
-          stagger: 0.07,
-          ease: 'power3.out',
-          scrollTrigger: { trigger: '.bars', start: 'top 90%' },
-        });
-
-        gsap.utils.toArray<HTMLElement>('.cd .mk').forEach(mockup => {
-          gsap.fromTo(
-            mockup,
-            { y: 40 },
-            {
-              y: -16,
-              ease: 'none',
-              scrollTrigger: {
-                trigger: mockup.parentElement,
-                start: 'top bottom',
-                end: 'top 11%',
-                scrub: true,
-              },
-            },
-          );
-        });
-
-        gsap.from('.pj-head', {
-          yPercent: 60,
-          opacity: 0,
-          duration: 1.1,
-          ease: 'expo.out',
-          scrollTrigger: { trigger: root.current, start: 'top 85%' },
+      // Every card except the last sticks near the top until the last card arrives
+      cards.slice(0, -1).forEach(card => {
+        ScrollTrigger.create({
+          trigger: card,
+          start: 'top 11%', // where the card sticks (11% down from the top of the screen)
+          endTrigger: lastCard,
+          end: 'top 11%', // release when the last card reaches the same spot
+          pin: true,
+          pinSpacing: false, // the next card keeps flowing up underneath
         });
       });
-
-      return () => mm.revert();
     },
     { scope: root },
   );
 
   return (
     <section className='pj' id='pj' ref={root}>
-      <div className='lab pj-head'>Selected work</div>
-      <h2 className='big pj-head'>Projects</h2>
+      <div className='lab'>Selected work</div>
+      <h2 className='big'>Projects</h2>
 
       {projects.map(
         ({ number, category, title, description, tags, mockup, href }) => (
