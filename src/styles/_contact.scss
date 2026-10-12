@@ -1,32 +1,131 @@
 @use 'variables' as *;
 
-// Contact call to action and footer
+// Contact form and footer
 
 .ct {
   padding: clamp(100px, 16vh, 170px) 0 70px;
-  text-align: center;
+}
+
+// --- Heading and intro ---
+.ct-head {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  align-items: end;
+  margin-bottom: clamp(40px, 8vh, 80px);
 }
 
 .ct .big {
-  font-size: clamp(52px, 11vw, 170px);
+  margin: 0;
+  font-size: clamp(52px, 9vw, 150px);
 }
 
-.mag {
-  display: inline-block;
-  margin-top: 34px;
-  padding: 18px 38px;
-  border-radius: 999px;
+.ct-intro {
+  justify-self: end;
+  max-width: 440px;
+  margin: 0;
+  color: var(--dim);
+  font-size: clamp(15px, 1.3vw, 18px);
+}
+
+// --- Form ---
+.ct-form {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+// Small purple square before each label
+.label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: clamp(12px, 1vw, 14px);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+
+  &::before {
+    content: '';
+    width: 8px;
+    height: 8px;
+    background: var(--ac);
+  }
+}
+
+.field input,
+.field textarea {
+  width: 100%;
+  padding: 16px;
+  border: 1px solid var(--ln);
+  border-radius: 0;
+  background: #0d0d0d;
+  color: var(--tx);
+  font: inherit;
+  font-size: 16px; // 16px or more stops iPhones zooming in on focus
+  transition: border-color 0.2s;
+
+  &::placeholder {
+    color: var(--dim);
+  }
+
+  &:focus {
+    border-color: var(--ac);
+    outline: none;
+  }
+}
+
+.field textarea {
+  min-height: 160px;
+  resize: vertical;
+}
+
+// Honeypot: off-screen instead of display: none, so bots still fill it in
+.hp {
+  position: absolute;
+  left: -9999px;
+}
+
+.ct-actions {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.send {
+  padding: 18px 44px;
+  border: 0;
   background: var(--ac);
   color: $ink;
+  font: inherit;
   font-weight: 600;
-  font-size: clamp(17px, 1.5vw, 22px);
+  font-size: clamp(16px, 1.3vw, 20px);
+  cursor: pointer;
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: default;
+  }
 }
 
+.ct-status {
+  margin: 0;
+  color: var(--dim);
+  font-size: clamp(14px, 1.1vw, 16px);
+}
+
+// --- Social links ---
 .sl {
   display: flex;
   gap: 28px;
-  justify-content: center;
-  margin-top: 34px;
+  margin-top: 56px;
   font-weight: 600;
   font-size: clamp(16px, 1.4vw, 20px);
   color: var(--dim);
@@ -36,6 +135,17 @@
   color: var(--ac);
 }
 
+@include mobile {
+  .ct-head {
+    grid-template-columns: 1fr;
+  }
+
+  .ct-intro {
+    justify-self: start;
+  }
+}
+
+// --- Footer ---
 footer {
   display: flex;
   justify-content: space-between;

@@ -215,20 +215,66 @@
     height: 0.4vw;
   }
 
-  // Contact and footer
+  // Contact form
+  .ct-head {
+    gap: 1.5vw;
+    margin-bottom: 4vw;
+  }
+
   .ct .big {
-    font-size: 11vw;
+    font-size: 9vw;
   }
 
-  .mag {
-    font-size: 1.5vw;
-    padding: 0.9vw 1.9vw;
-    margin-top: 1.8vw;
+  .ct-intro {
+    max-width: 24vw;
+    font-size: 1.3vw;
   }
 
+  .ct-form {
+    gap: 1.2vw;
+  }
+
+  .field {
+    gap: 0.6vw;
+  }
+
+  .label {
+    gap: 0.6vw;
+    font-size: 1vw;
+  }
+
+  .label::before {
+    width: 0.5vw;
+    height: 0.5vw;
+  }
+
+  .field input,
+  .field textarea {
+    padding: 1vw;
+    font-size: 1.1vw;
+  }
+
+  .field textarea {
+    min-height: 9vw;
+  }
+
+  .ct-actions {
+    gap: 1.5vw;
+  }
+
+  .send {
+    padding: 1vw 2.4vw;
+    font-size: 1.3vw;
+  }
+
+  .ct-status {
+    font-size: 1.1vw;
+  }
+
+  // Social links and footer
   .sl {
     font-size: 1.4vw;
-    margin-top: 1.8vw;
+    margin-top: 3vw;
     gap: 1.5vw;
   }
 
