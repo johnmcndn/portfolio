@@ -1,3 +1,5 @@
+import type { IconType } from 'react-icons';
+
 export interface ServiceItem {
   number: string;
   title: string;
@@ -25,4 +27,10 @@ export interface ProjectItem {
 export interface NavLink {
   href: string;
   label: string;
+}
+
+export interface SkillItem {
+  name: string;
+  icon: IconType;
+  color: string;
 }

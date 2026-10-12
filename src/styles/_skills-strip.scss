@@ -15,7 +15,10 @@
 }
 
 .tk span {
-  font: 400 clamp(44px, 8vw, 120px)/1 $font-display;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.28em; // space between the logo and the name
+  font: 400 clamp(44px, 8vw, 120px) / 1 $font-display;
   text-transform: uppercase;
   padding-right: 0.6em;
   color: var(--dim);
@@ -25,4 +28,17 @@
   content: '/';
   color: var(--ac);
   margin-left: 0.6em;
+}
+
+.tk svg {
+  flex: none;
+  width: 0.75em;
+  height: 0.75em;
+}
+
+.mq {
+  cursor: default;
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent; // no grey flash when tapping on phones
 }

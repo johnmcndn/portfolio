@@ -45,8 +45,11 @@ const SkillsStrip = () => {
       onMouseLeave={() => setSpeed(1)}
     >
       <div className='tk' ref={track}>
-        {LOOPED_SKILLS.map((skill, index) => (
-          <span key={`${skill}-${index}`}>{skill}</span>
+        {LOOPED_SKILLS.map(({ name, icon: Icon, color }, index) => (
+          <span key={`${name}-${index}`}>
+            <Icon aria-hidden='true' color={color} />
+            {name}
+          </span>
         ))}
       </div>
     </div>

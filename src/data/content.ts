@@ -3,6 +3,7 @@ import type {
   NavLink,
   ProjectItem,
   ServiceItem,
+  SkillItem,
 } from '@/types/content';
 
 export const site = {
@@ -22,23 +23,46 @@ export const navLinks: NavLink[] = [
 ];
 
 /** Shown in the scroll-driven strip under the hero. */
-export const skills: string[] = [
-  'Web Design',
-  'Frontend',
-  'UI / UX',
-  'HTML',
-  'CSS / SCSS',
-  'JavaScript',
-  'TypeScript',
-  'React',
-  'Next.js',
-  'Tailwind CSS',
-  'GSAP',
-  'Motion',
-  'Figma',
-  'REST API',
-  'Full-Stack',
+const PURPLE = '#a05cff'; // site accent, used for the logos that have no brand
+
+/** Shown in the skills strip under the hero: a logo, its brand colour and a name. */
+export const skills: SkillItem[] = [
+  { name: 'Web Design', icon: LuPenTool, color: PURPLE },
+  { name: 'Frontend', icon: LuMonitor, color: PURPLE },
+  { name: 'UI / UX', icon: LuLayoutDashboard, color: PURPLE },
+  { name: 'HTML', icon: SiHtml5, color: '#E34F26' },
+  { name: 'CSS / SCSS', icon: SiCss, color: '#A97BDB' }, // official #663399, lightened to show on black
+  { name: 'JavaScript', icon: SiJavascript, color: '#F7DF1E' },
+  { name: 'TypeScript', icon: SiTypescript, color: '#3178C6' },
+  { name: 'React', icon: SiReact, color: '#61DAFB' },
+  { name: 'Next.js', icon: SiNextdotjs, color: '#FFFFFF' }, // official black, white on a dark page
+  { name: 'Tailwind CSS', icon: SiTailwindcss, color: '#06B6D4' },
+  { name: 'GSAP', icon: SiGreensock, color: '#88CE02' },
+  { name: 'Motion', icon: SiFramer, color: '#0055FF' }, // Motion (motion.dev) was formerly Framer Motion
+  { name: 'Figma', icon: SiFigma, color: '#F24E1E' },
+  { name: 'REST API', icon: LuPlug, color: PURPLE },
+  { name: 'Full-Stack', icon: LuLayers, color: PURPLE },
 ];
+import {
+  LuLayers,
+  LuLayoutDashboard,
+  LuMonitor,
+  LuPenTool,
+  LuPlug,
+} from 'react-icons/lu';
+
+import {
+  SiCss,
+  SiFigma,
+  SiFramer,
+  SiGreensock,
+  SiHtml5,
+  SiJavascript,
+  SiNextdotjs,
+  SiReact,
+  SiTailwindcss,
+  SiTypescript,
+} from 'react-icons/si';
 
 export const services: ServiceItem[] = [
   { number: '01', title: 'Design', tools: 'UI · Layout · Type' },
