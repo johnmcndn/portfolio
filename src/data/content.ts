@@ -4,6 +4,7 @@ import type {
   ProjectItem,
   ServiceItem,
   SkillItem,
+  ProcessStep,
 } from '@/types/content';
 
 export const site = {
@@ -128,5 +129,36 @@ export const projects: ProjectItem[] = [
       'A short description of what this project is and what you did. Edit me.',
     tags: ['UI / UX', 'Figma', 'JS'],
     mockup: 'mobile',
+  },
+];
+
+export const processSteps: ProcessStep[] = [
+  {
+    number: '01',
+    label: 'Idea',
+    title: 'Understand the why',
+    text: 'I start by learning about your goals and your audience, so the site solves the right problem.',
+    result: 'Clear goals and a plan for the project',
+  },
+  {
+    number: '02',
+    label: 'Design',
+    title: 'Shape the look',
+    text: 'I turn the plan into layouts, type and colour in Figma, so you can approve the direction before any code.',
+    result: 'Approved designs ready to build',
+  },
+  {
+    number: '03',
+    label: 'Code',
+    title: 'Build it right',
+    text: 'I build responsive, accessible pages with React and Next.js, with clean code and good performance.',
+    result: 'Fast, clean, working pages',
+  },
+  {
+    number: '04',
+    label: 'Launch',
+    title: 'Make it live',
+    text: 'I test on different devices, deploy the site and hand it over, ready for real visitors.',
+    result: 'A live site you can share',
   },
 ];

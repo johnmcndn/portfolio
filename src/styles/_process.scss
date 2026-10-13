@@ -1,0 +1,148 @@
+@use 'variables' as *;
+
+// "Behind the work": four process steps as full-width rows
+
+$mono: ui-monospace, Menlo, Consolas, monospace;
+
+.pr {
+  margin-top: clamp(80px, 12vh, 140px);
+}
+
+// --- Top row: label, plus sign, year ---
+.pr-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font: 500 clamp(12px, 1vw, 14px) $mono;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--dim);
+
+  .tag {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--tx);
+
+    // Small purple square before the label
+    &::before {
+      content: '';
+      width: 8px;
+      height: 8px;
+      background: var(--ac);
+    }
+  }
+
+  .plus {
+    color: var(--ac);
+  }
+}
+
+.pr-title {
+  margin: clamp(40px, 8vh, 90px) 0 clamp(40px, 8vh, 90px);
+  font-size: clamp(40px, 6vw, 96px);
+}
+
+// --- Rows ---
+.pr-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.pr-row {
+  border-top: 1px solid var(--ln);
+  padding: 14px 0;
+
+  &:nth-last-of-type(1) {
+    border-bottom: 1px solid var(--ln);
+  }
+
+  // Rows 2 and 4 are pushed in from the left, so the rows step in and out
+  &:nth-child(even) {
+    padding-left: clamp(0px, 9vw, 180px);
+  }
+}
+
+// --- Step row ---
+.pr-step {
+  display: grid;
+  grid-template-columns: clamp(90px, 9vw, 150px) 1.2fr 1.5fr 1fr;
+  align-items: center;
+  gap: clamp(16px, 2.6vw, 44px);
+  min-height: clamp(120px, 17vh, 170px);
+  padding: 22px clamp(18px, 2.4vw, 36px);
+  border-left: 3px solid var(--ac);
+  background: #0f0f12;
+  transition: background 0.3s;
+
+  &:hover {
+    background: #17102a;
+  }
+
+  .head {
+    display: flex;
+    gap: 10px;
+    font: 500 clamp(11px, 0.9vw, 13px) $mono;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+
+    .num {
+      color: var(--dim);
+    }
+  }
+
+  h3 {
+    margin: 0;
+    font: 400 clamp(26px, 3.4vw, 54px) / 1 $font-display;
+    text-transform: uppercase;
+  }
+
+  p {
+    margin: 0;
+    max-width: 46ch;
+    color: var(--dim);
+    font-size: clamp(14px, 1.1vw, 16px);
+  }
+
+  .result {
+    padding: 12px 14px;
+    background: #ffffff0d;
+    font: 500 clamp(10px, 0.8vw, 12px) $mono;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--dim);
+  }
+}
+
+// --- Closing note under the last row ---
+.pr-note {
+  align-self: flex-end;
+  max-width: 440px;
+  margin: 0;
+  padding-top: clamp(32px, 6vh, 56px);
+  color: var(--dim);
+  font-size: clamp(14px, 1.2vw, 17px);
+
+  b {
+    color: var(--tx);
+    font-weight: 600;
+  }
+}
+
+// Tablets and phones: stack each row's content, no step-in
+@media (max-width: 960px) {
+  .pr-row,
+  .pr-row:nth-child(even) {
+    padding-left: 0;
+  }
+
+  .pr-step {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    padding: 20px 18px;
+  }
+
+  .pr-note {
+    align-self: flex-start;
+  }
+}

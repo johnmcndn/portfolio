@@ -108,67 +108,46 @@
   }
 
   // Behind the work
-  .px .mid .big {
+  .pr-meta {
+    font-size: 1vw;
+  }
+
+  .pr-title {
+    margin: 4vw 0;
     font-size: 6vw;
   }
 
-  .fr .cap {
-    font-size: 0.75vw;
-    left: 0.7vw;
-    top: 0.6vw;
+  .pr-row {
+    padding: 0.8vw 0;
   }
 
-  .ui {
-    inset: 2.3vw 0.8vw 0.8vw;
-    gap: 0.5vw;
+  .pr-step {
+    min-height: 9vw;
+    padding: 1.4vw 2vw;
+    gap: 2.6vw;
   }
 
-  .ui .bar {
-    height: 0.4vw;
+  .pr-step .head {
+    font-size: 0.9vw;
   }
 
-  .ui .hr {
+  .pr-step h3 {
     font-size: 3.4vw;
-    padding: 0.6vw;
   }
 
-  .sw i {
-    height: 1.3vw;
+  .pr-step p {
+    font-size: 1.1vw;
   }
 
-  .fr pre {
-    font-size: 1.05vw;
-    inset: 2.3vw 0.9vw 0.7vw;
+  .pr-step .result {
+    padding: 0.8vw 0.9vw;
+    font-size: 0.8vw;
   }
 
-  .phn {
-    top: 2.4vw;
-    padding: 0.7vw;
-    gap: 0.4vw;
-  }
-
-  .phn .l {
-    height: 0.7vw;
-  }
-
-  .phn .l.s {
-    height: 0.4vw;
-  }
-
-  .phn .b {
-    font-size: 0.55vw;
-    padding: 0.35vw;
-    margin-top: 0.3vw;
-  }
-
-  .phn .lv {
-    font-size: 0.55vw;
-    padding-bottom: 2vw;
-  }
-
-  .lv i {
-    width: 0.35vw;
-    height: 0.35vw;
+  .pr-note {
+    max-width: 24vw;
+    padding-top: 3vw;
+    font-size: 1.2vw;
   }
 
   // Projects

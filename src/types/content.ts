@@ -34,3 +34,11 @@ export interface SkillItem {
   icon: IconType;
   color: string;
 }
+
+export interface ProcessStep {
+  number: string;
+  label: string;
+  title: string;
+  text: string;
+  result: string;
+}
