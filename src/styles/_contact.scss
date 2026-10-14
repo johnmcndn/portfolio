@@ -148,9 +148,15 @@
 // --- Footer ---
 footer {
   display: flex;
+  flex-wrap: wrap; // on narrow screens the items wrap onto new lines
   justify-content: space-between;
+  gap: 8px 24px;
   padding: 22px 0 34px;
   border-top: 1px solid var(--ln);
   color: var(--dim);
   font-size: clamp(14px, 1.1vw, 16px);
+
+  a:hover {
+    color: var(--ac);
+  }
 }

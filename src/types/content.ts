@@ -42,3 +42,18 @@ export interface ProcessStep {
   text: string;
   result: string;
 }
+
+export interface CredentialItem {
+  kind: string; // "Education" or "Certificate"
+  title: string;
+  detail?: string;
+}
+
+export type CredentialArtKind = 'cap' | 'badge' | 'responsive';
+
+export interface CredentialItem {
+  kind: string; // "Education" or "Certificate"
+  title: string;
+  detail?: string;
+  art: CredentialArtKind; // which illustration to show on the card
+}

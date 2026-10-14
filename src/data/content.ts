@@ -5,6 +5,7 @@ import type {
   ServiceItem,
   SkillItem,
   ProcessStep,
+  CredentialItem,
 } from '@/types/content';
 
 export const site = {
@@ -98,8 +99,26 @@ export const experience: ExperienceItem[] = [
   },
 ];
 
-export const education =
-  'BS Computer Science, Lyceum of the Philippines University · Complete Full-Stack Web Development Bootcamp · Responsive Web Design';
+export const credentials: CredentialItem[] = [
+  {
+    kind: 'Education',
+    title: 'BS Computer Science',
+    detail: 'Lyceum of the Philippines University Manila',
+    art: 'cap',
+  },
+  {
+    kind: 'Certificate',
+    title: 'Complete Full-Stack Web Development Bootcamp',
+    detail: 'Udemy',
+    art: 'badge',
+  },
+  {
+    kind: 'Certificate',
+    title: 'Responsive Web Design',
+    detail: 'freeCodeCamp',
+    art: 'responsive',
+  },
+];
 
 /** Placeholder projects: replace the text, tags and mock-up kind with real work. */
 export const projects: ProjectItem[] = [

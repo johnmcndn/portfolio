@@ -101,10 +101,35 @@
     font-size: 1.3vw;
   }
 
-  .ex .ed {
-    font-size: 1.3vw;
-    max-width: 42vw;
-    margin-top: 1.2vw;
+  .ex-credentials {
+    margin-top: 5vw;
+  }
+
+  .cred-grid {
+    gap: 1vw;
+  }
+
+  .cred {
+    min-height: 14vw;
+    padding: 1.8vw;
+  }
+
+  .cred .art {
+    top: 1.6vw;
+    right: 1.6vw;
+    width: 7vw;
+  }
+
+  .cred .kind {
+    font-size: 0.9vw;
+  }
+
+  .cred h3 {
+    font-size: 1.7vw;
+  }
+
+  .cred p {
+    font-size: 1.1vw;
   }
 
   // Behind the work
