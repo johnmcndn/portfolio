@@ -17,9 +17,15 @@ const manrope = Manrope({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://your-site.vercel.app'), // needed so the image links are absolute
   title: 'mac.dev — John Marco Condino',
   description:
-    'John Marco Condino is a web designer and web developer building clean, fast websites with React and Next.js.',
+    'Web designer and web developer building fast, clean websites with React and Next.js.',
+  openGraph: {
+    title: 'mac.dev — John Marco Condino',
+    description: 'Web designer and web developer.',
+    type: 'website',
+  },
 };
 
 export const viewport: Viewport = {
