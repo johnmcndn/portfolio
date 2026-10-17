@@ -9,6 +9,35 @@ $mono: ui-monospace, Menlo, Consolas, monospace;
   margin-top: clamp(80px, 12vh, 130px);
 }
 
+.ex-head {
+  display: flex;
+  flex-wrap: wrap; // on very narrow screens the button drops under the label
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 16px;
+
+  .lab {
+    margin: 0;
+  }
+}
+
+.ex-cv {
+  padding: 9px 18px;
+  border: 1px solid var(--ac);
+  color: var(--ac);
+  font-size: clamp(13px, 1vw, 15px);
+  font-weight: 600;
+  transition:
+    background 0.2s,
+    color 0.2s;
+
+  &:hover {
+    background: var(--ac);
+    color: $ink;
+  }
+}
+
 .ex .sr .n {
   width: 200px;
   flex: none;

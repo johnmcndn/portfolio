@@ -15,6 +15,8 @@ export const site = {
   github: 'https://github.com/johnmcndn',
   linkedin: 'https://linkedin.com/in/johncondino',
   year: 2026,
+  resume: '/John%20Marco%20Condino%20Resume.pdf',
+  resumeFileName: 'John Marco Condino Resume.pdf',
 };
 
 export const navLinks: NavLink[] = [
