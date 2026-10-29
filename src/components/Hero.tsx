@@ -16,6 +16,7 @@ const Hero = () => {
       />
 
       <div className='hb'>
+        {site.openToWork && <div className='avail'>Open to work</div>}
         <div className='hi'>Hey, my name is</div>
 
         <h1>

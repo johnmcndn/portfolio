@@ -17,6 +17,7 @@ export const site = {
   year: 2026,
   resume: '/John%20Marco%20Condino%20Resume.pdf',
   resumeFileName: 'John Marco Condino Resume.pdf',
+  openToWork: true,
 };
 
 export const navLinks: NavLink[] = [
